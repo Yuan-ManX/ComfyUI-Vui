@@ -110,3 +110,26 @@ class Vui:
         )
 
         return (waveform,)
+
+
+class SaveVui:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "audio_path": ("STRING", {"default": "output.wav"}),
+                "waveform": ("WAVEFORM",),
+            }
+        }
+
+    RETURN_TYPES = ()
+    RETURN_NAMES = ()
+    FUNCTION = "save"
+    CATEGORY = "Vui"
+
+    def save(self, audio_path, waveform):
+
+        torchaudio.save(audio_path, waveform[0], 22050)
+        
+        return ()
+

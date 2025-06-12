@@ -94,12 +94,19 @@ class Vui:
             }
         }
 
-    RETURN_TYPES = ("MODEL",)
-    RETURN_NAMES = ("model",)
-    FUNCTION = "load_model"
+    RETURN_TYPES = ("WAVEFORM",)
+    RETURN_NAMES = ("waveform",)
+    FUNCTION = "generate"
     CATEGORY = "Vui"
 
-    def load_model(self, model_path, device):
-        model = Vui.from_pretrained(model_path).cuda()
-        
-        return (model,)
+    def generate(self, model, prompt, temperature, top_k, top_p, max_duration):
+        waveform = render(
+            model,
+            text=prompt,
+            temperature=temperature,
+            top_k=top_k,
+            top_p=top_p,
+            max_secs=max_duration,
+        )
+
+        return (waveform,)

@@ -27,10 +27,10 @@ pip install -r requirements.txt
 ### Download Pretrained Models
 
 
-Direct3D-S2 Pretrained [Models](https://huggingface.co/fluxions/vui)
+Vui Pretrained [Models](https://huggingface.co/fluxions/vui)
 
-Vui.BASE is base checkpoint trained on 40k hours of audio conversations
+1. Vui.BASE is base checkpoint trained on 40k hours of audio conversations
 
-Vui.ABRAHAM is a single speaker model that can reply with context awareness.
+2. Vui.ABRAHAM is a single speaker model that can reply with context awareness.
 
-Vui.COHOST is checkpoint with two speakers that can talk to each other.
+3. Vui.COHOST is checkpoint with two speakers that can talk to each other.

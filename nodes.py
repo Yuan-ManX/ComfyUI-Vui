@@ -47,3 +47,59 @@ class LoadVuiPrompt:
         
         return (prompt,)
 
+
+class Vui:
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "model": ("MODEL",),
+                "prompt": ("PROMPT",),
+                "temperature": (
+                    "FLOAT",
+                    {
+                        "default": 0.5,
+                        "min": 0.1,
+                        "max": 1.0,
+                        "step": 0.1,
+                    },
+                ),
+                "top_k": (
+                    "INT",
+                    {
+                        "default": 100,
+                        "min": 1,
+                        "max": 200,
+                        "step": 1,
+                    },
+                ),
+                "top_p": (
+                    "FLOAT",
+                    {
+                        "default": 0.9,
+                        "min": 0.1,
+                        "max": 1.0,
+                        "step": 0.05,
+                    },
+                ),
+                "max_duration": (
+                    "INT",
+                    {
+                        "default": 120,
+                        "min": 5,
+                        "max": 120,
+                        "step": 5,
+                    },
+                ),
+            }
+        }
+
+    RETURN_TYPES = ("MODEL",)
+    RETURN_NAMES = ("model",)
+    FUNCTION = "load_model"
+    CATEGORY = "Vui"
+
+    def load_model(self, model_path, device):
+        model = Vui.from_pretrained(model_path).cuda()
+        
+        return (model,)

@@ -25,3 +25,25 @@ class LoadVuiModel:
         return (model,)
 
 
+class LoadVuiPrompt:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "text": ("STRING", {
+                    "default": "Hey, here is some random stuff, usually something quite long as the shorter the text the less likely the model can cope!",
+                    "multiline": True
+                }),
+            }
+        }
+
+    RETURN_TYPES = ("PROMPT",)
+    RETURN_NAMES = ("prompt",)
+    FUNCTION = "load_prompt"
+    CATEGORY = "Vui"
+
+    def load_prompt(self, text):
+        prompt = text
+        
+        return (prompt,)
+
